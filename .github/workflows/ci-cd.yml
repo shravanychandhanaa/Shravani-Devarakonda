@@ -1,0 +1,73 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # This workflow will run whenever code is pushed to the 'main' branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # The type of machine to run the job on
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # This action checks out your repository under $GITHUB_WORKSPACE
+
+    - name: Set up Node.js (Example for a web project)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18' # Specify the Node.js version you want to use
+      # If your project doesn't use Node.js (e.g., pure HTML/CSS/JS), you can skip this step.
+
+    - name: Install dependencies (If applicable)
+      run: |
+        # Example: npm install for Node.js projects
+        # If your project doesn't have dependencies, you can remove this step.
+        echo "No dependencies to install for this simple HTML project."
+        # For a real project, you might have:
+        # npm install
+        # pip install -r requirements.txt (for Python)
+        # composer install (for PHP)
+
+    - name: Build project (If applicable)
+      run: |
+        # Example: npm run build for a React/Vue project
+        # For this simple HTML project, the "build" is just having the files.
+        echo "Building phase for simple HTML project: files are already built."
+        # For a real project, you might have:
+        # npm run build
+        # webpack --config webpack.config.js
+
+    - name: Archive production artifacts (Optional but good practice)
+      uses: actions/upload-artifact@v4
+      with:
+        name: web-app-dist
+        path: . # This uploads the entire current directory. Be more specific for real projects (e.g., dist/, build/)
+        # For a real web project, you'd specify your build output directory, like:
+        # path: dist/ # if your build output is in a 'dist' folder
+
+    - name: Deploy to Hosting Target (Simplified for this example)
+      run: |
+        echo "Deployment step started..."
+        echo "Simulating deployment of web-app-dist to a hosting target."
+        echo "In a real scenario, this would involve commands like:"
+        echo "  - AWS S3 sync: aws s3 sync . s3://your-bucket-name --delete"
+        echo "  - SSH/SCP: scp -r . user@your-server:/var/www/html"
+        echo "  - Deploying to a PaaS like Heroku, Vercel, Netlify, etc."
+        echo "Deployment simulation complete!"
+        # For demonstration, let's create a "deployed" file to confirm.
+        mkdir -p deployed
+        echo "Project deployed successfully at $(date)" > deployed/status.txt
+        cat deployed/status.txt
+
+    - name: Verify Deployment (Example)
+      run: |
+        echo "Verification step started..."
+        if [ -f "deployed/status.txt" ]; then
+          echo "Deployment status file found. Content:"
+          cat deployed/status.txt
+          echo "Deployment verification passed!"
+        else
+          echo "Deployment status file not found. Verification failed!"
+          exit 1 # Fail the job if verification fails
+        fi
