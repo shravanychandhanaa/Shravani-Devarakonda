@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<script src="register.js"></script>
+<style>
+    body{
+        background-color:aliceblue;
+    }
+    header img{
+        width: 100px;  
+        padding-top: 8px; 
+    }
+    header h1{
+        background-color: rgb(134, 158, 143);
+        text-align: center;
+        color:brown;
+        font-size: 50px;
+    }  
+    header nav a{
+        font-size: 10px;
+        padding: 500px;
+    } 
+    main nav a{
+        padding: 65px;
+        color:rgb(231, 12, 165);
+    }
+    footer{
+        text-align: center;
+    }
+    #total{
+        display: flex;
+    }
+    #first{
+        background-color:rgb(145, 134, 158);
+        width: 50%;
+        height: 370px;
+    }
+    #register{
+        text-align: center;
+        position: relative;
+        top: 100px;
+        animation-name: one;
+        animation-duration: 4s;
+    }
+    @keyframes one{
+        0% {top: -20px;}
+    }
+    #second{
+        background-color:rgb(158, 134, 154);
+        width: 50%;
+        height: 370px;
+    }
+    #login{
+        text-align: center;
+        position: relative;
+        top: 100px;
+        animation-name: two;
+        animation-duration: 4s;
+    }
+    @keyframes two{
+        0% {top: -20px;}
+    }   
+    input {
+        border-radius: 30px;
+        border-color: black;
+    }
+    </style>
+    <body>
+        <header>       
+                <h1><img src="logo1.jpg">Shravani Cakes</h1>          
+        </header>
+        <main>
+            <nav>
+                <ul>
+                <a href="home.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="About us.html">About us</a>
+                <a href="login&register.html">Login/Register</a>  
+                </ul>   
+            </nav>
+        </main>
+        <div id="total">    
+            <div id="first">     
+                <form id="register">
+                    <h2>Register</h2>                
+                    <input type="text" name="firstname" placeholder="Enter your First name"><br>
+                    <input type="text" name="lastname" placeholder="Enter your Last name"><br>
+                    <input type="number" name="number" placeholder="Enter your Phone number"><br>
+                    <input type="email" name="email" placeholder="Enter your Email"><br>
+                    <input type="password" name="password" placeholder="Enter your Password"><br>
+                    <input type="submit" name="submit" value="submit"> 
+                </form>
+            </div>  
+            <div id="second">                 
+                <form id="login">
+                    <h2>Login</h2>
+                    <input type="email" name="email" placeholder="Enter your Email"><br>
+                    <input type="password" name="password" placeholder="Enter your Password"><br>
+                    <input type="submit" name="submit" value="submit">    
+                </form>
+            </div>  
+        </div> 
+       
+
+        <footer>
+                <p>&copy; 2024 Shravani Devarakonda</p>
+        </footer>
+
+
+        </body>
+        </html>
